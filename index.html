@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -13,10 +13,45 @@
       font-family: 'Inter', sans-serif;
     }
 
+    :root {
+      --bg: #f9f9f9;
+      --text: #333;
+      --card-bg: white;
+      --button-bg: #1e88e5;
+      --button-hover: #1565c0;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #121212;
+        --text: #f0f0f0;
+        --card-bg: #1f1f1f;
+        --button-bg: #3b82f6;
+        --button-hover: #2563eb;
+      }
+    }
+
+    body.dark {
+      --bg: #121212;
+      --text: #f0f0f0;
+      --card-bg: #1f1f1f;
+      --button-bg: #3b82f6;
+      --button-hover: #2563eb;
+    }
+
     body {
-      background: #f9f9f9;
-      color: #333;
+      background: var(--bg);
+      color: var(--text);
       line-height: 1.6;
+      transition: all 0.3s ease;
+      opacity: 0;
+      animation: fadeInBody 0.8s ease forwards;
+    }
+
+    @keyframes fadeInBody {
+      to {
+        opacity: 1;
+      }
     }
 
     header {
@@ -24,11 +59,39 @@
       color: white;
       padding: 2rem 1rem;
       text-align: center;
+      position: relative;
     }
 
     header h1 {
       font-size: 2.5rem;
       font-weight: 800;
+    }
+
+    #langToggle,
+    #darkToggle {
+      position: absolute;
+      top: 1rem;
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      background: #fff;
+      color: #1e1e2f;
+    }
+
+    #darkToggle {
+      left: 1rem;
+    }
+
+    #langToggle {
+      right: 1rem;
+    }
+
+    body.dark #darkToggle,
+    body.dark #langToggle {
+      background: #333;
+      color: #fff;
     }
 
     main {
@@ -39,31 +102,42 @@
 
     section {
       margin-bottom: 2rem;
-      background: white;
+      background: var(--card-bg);
       border-radius: 12px;
       padding: 1.5rem;
       box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    section:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
     }
 
     h2 {
       font-size: 1.5rem;
-      color: #1e1e2f;
       margin-bottom: 1rem;
+      color: var(--text);
     }
 
     a.button {
       display: inline-block;
       margin-top: 1rem;
+      margin-right: 0.5rem;
       padding: 0.6rem 1.2rem;
-      background: #1e88e5;
+      background: var(--button-bg);
       color: white;
       text-decoration: none;
       border-radius: 8px;
-      transition: background 0.3s;
+      transition: background 0.3s, transform 0.1s ease-in-out;
     }
 
     a.button:hover {
-      background: #1565c0;
+      background: var(--button-hover);
+    }
+
+    a.button:active {
+      transform: scale(0.96);
     }
 
     footer {
@@ -72,32 +146,117 @@
       font-size: 0.9rem;
       color: #999;
     }
+
+    .zh-section {
+      border: 1px dashed #ccc;
+      background: #fffbe6;
+    }
+
+    .zh, .en {
+      display: none;
+    }
+
+    .show {
+      display: block;
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.6s ease-out;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 600px) {
+      section {
+        padding: 1rem;
+      }
+
+      a.button {
+        display: block;
+        width: 100%;
+        text-align: center;
+        margin-bottom: 0.5rem;
+      }
+
+      #darkToggle, #langToggle {
+        font-size: 0.85rem;
+        padding: 0.4rem 0.8rem;
+      }
+    }
   </style>
 </head>
 <body>
   <header>
     <h1>@HuiLanStudio</h1>
-    <p>由 LeBaor 创立的创作型工作室</p>
+    <p class="en show">A modern creative studio founded by LeBaor</p>
+    <p class="zh">一个由 LeBaor 创立的现代创作型工作室</p>
+    <button id="darkToggle">🌙</button>
+    <button id="langToggle">中文</button>
   </header>
+
   <main>
-    <section>
-      <h2>工作室简介</h2>
-      <p>@HuiLanStudio 是一个专注于文学与编程创作的现代工作室，由 LeBaor 领导。我们的目标是探索创意与技术的交叉点。</p>
+    <section class="en show fade-in">
+      <h2>About the Studio</h2>
+      <p>@HuiLanStudio is a studio that explores creativity in both literature and software development. Founded by LeBaor, we aim to combine imagination and technology to build meaningful work.</p>
     </section>
 
-    <section>
-      <h2>分部一：文学部</h2>
-      <p>文学部专注于诗歌、小说与随笔的创作，呈现思想的深度与美感。</p>
-      <a class="button" href="https://github.com/your-repo-url" target="_blank">下载作品 PDF</a>
+    <section class="en show fade-in">
+      <h2>Department 1: Literature</h2>
+      <p>The Literature Department focuses on crafting poems, novels, and essays that express deep thought and beauty. You can download our works here:</p>
+      <a class="button" href="https://github.com/your-repo-url" target="_blank">Download PDF from GitHub</a>
     </section>
 
-    <section>
-      <h2>分部二：Coding部</h2>
-      <p>Coding部专注于软件开发、网页设计与技术研究，致力于用代码改变世界。</p>
+    <section class="en show fade-in">
+      <h2>Department 2: Coding</h2>
+      <p>The Coding Department is dedicated to software development, web design, and technology exploration. We strive to make a difference through code.</p>
+    </section>
+
+    <section class="zh fade-in">
+      <h2>中文用户：</h2>
+      <p>您可以点击下方按钮下载文学作品：</p>
+      <!-- GitHub 和 阿里云盘下载链接，可根据需要更换 -->
+      <a class="button" href="https://github.com/your-repo-url" target="_blank">GitHub 下载</a>
+      <a class="button" href="https://www.aliyundrive.com/s/example" target="_blank">阿里云盘下载</a>
     </section>
   </main>
+
   <footer>
     &copy; 2025 @HuiLanStudio. All rights reserved.
   </footer>
+
+  <script>
+    const toggleBtn = document.getElementById('langToggle');
+    const darkToggle = document.getElementById('darkToggle');
+    const zhEls = document.querySelectorAll('.zh');
+    const enEls = document.querySelectorAll('.en');
+
+    let isEnglish = true;
+
+    toggleBtn.addEventListener('click', () => {
+      isEnglish = !isEnglish;
+      toggleBtn.textContent = isEnglish ? '中文' : 'English';
+      zhEls.forEach(el => el.classList.toggle('show', !isEnglish));
+      enEls.forEach(el => el.classList.toggle('show', isEnglish));
+    });
+
+    darkToggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark');
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  </script>
 </body>
 </html>
