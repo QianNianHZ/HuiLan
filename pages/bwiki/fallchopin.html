@@ -1,1 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fall Chopin - @HuiLanStudio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        :root {
+            --bg: #f9f9f9;
+            --text: #333;
+            --card-bg: white;
+            --button-bg: #1e88e5;
+            --button-hover: #1565c0;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #121212;
+                --text: #f0f0f0;
+                --card-bg: #1f1f1f;
+                --button-bg: #3b82f6;
+                --button-hover: #2563eb;
+            }
+        }
+
+        body.dark {
+            --bg: #121212;
+            --text: #f0f0f0;
+            --card-bg: #1f1f1f;
+            --button-bg: #3b82f6;
+            --button-hover: #2563eb;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            transition: all 0.3s ease;
+            opacity: 0;
+            animation: fadeInBody 0.8s ease forwards;
+        }
+
+        @keyframes fadeInBody {
+            to {
+                opacity: 1;
+            }
+        }
+
+        header {
+            background: #1e1e2f;
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+            position: relative;
+        }
+
+            header h1 {
+                font-size: 2.5rem;
+                font-weight: 800;
+            }
+
+        #langToggle,
+        #darkToggle {
+            position: absolute;
+            top: 1rem;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            background: #fff;
+            color: #1e1e2f;
+        }
+
+        #darkToggle {
+            left: 1rem;
+        }
+
+        #langToggle {
+            right: 1rem;
+        }
+
+        body.dark #darkToggle,
+        body.dark #langToggle {
+            background: #333;
+            color: #fff;
+        }
+
+        main {
+            padding: 2rem;
+            max-width: 900px;
+            margin: auto;
+        }
+
+        section {
+            margin-bottom: 2rem;
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+            section:hover {
+                transform: translateY(-4px);
+                box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            }
+
+        h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text);
+        }
+
+        a.button {
+            display: inline-block;
+            margin-top: 1rem;
+            margin-right: 0.5rem;
+            padding: 0.6rem 1.2rem;
+            background: var(--button-bg);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background 0.3s, transform 0.1s ease-in-out;
+        }
+
+            a.button:hover {
+                background: var(--button-hover);
+            }
+
+            a.button:active {
+                transform: scale(0.96);
+            }
+
+        footer {
+            text-align: center;
+            padding: 1rem;
+            font-size: 0.9rem;
+            color: #999;
+        }
+
+        .zh-section {
+            border: 1px dashed #ccc;
+            background: #fffbe6;
+        }
+
+        .zh, .en {
+            display: none;
+        }
+
+        .show {
+            display: block;
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease-out;
+        }
+
+            .fade-in.visible {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+        @media (max-width: 600px) {
+            section {
+                padding: 1rem;
+            }
+
+            a.button {
+                display: block;
+                width: 100%;
+                text-align: center;
+                margin-bottom: 0.5rem;
+            }
+
+            #darkToggle, #langToggle {
+                font-size: 0.85rem;
+                padding: 0.4rem 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Fall Chopin</h1>
+        <button id="darkToggle">🌙</button>
+        <button id="langToggle">中文</button>
+    </header>
+
+    <main>
+        <section class="en show fade-in">
+            <h2>About Fall Chopin</h2>
+            <p>"Fall Chopin" is a deeply emotional narrative exploring the relationship between two young people, Aururo and Rain. The story delves into the complexities of love, pain, emotional turmoil, and self-recognition. It challenges the idea of romantic relationships by exploring how intense emotions, misunderstandings, and trauma shape the characters’ development.</p>
+
+            <h3>A-Edition vs B-Edition</h3>
+            <p><strong>A Edition:</strong> The A edition of "Fall Chopin" is a more restrained and introspective version of the story. It eliminates certain emotional extremes and avoids detailed critiques of individual characters. Instead, the A edition feels like a private memoir, written for the narrator's own healing and introspection. It has a more subdued tone and offers a sense of nostalgia and longing, focusing on the complexity of emotions without getting too explicit.</p>
+            <p><strong>B Edition:</strong> The B edition provides a much deeper and more raw exploration of the characters' emotions and experiences. It includes detailed, often painful events that were left out of the A edition. In the B edition, readers are exposed to hidden notes, conflicts, misunderstandings, and moments of emotional chaos. It is more intense, offering a brutal realism about the characters’ struggles with themselves and each other. The B edition provides a more complete picture but may be difficult for some to process.</p>
+
+            <h3>Warning: Spoilers Ahead</h3>
+            <p>This book contains intense emotional situations, including themes of self-harm, emotional abuse, and psychological trauma. These elements are central to the story’s development, and readers are advised to proceed with caution. The themes explored are raw and may not be suitable for everyone.</p>
+
+            <h3>Character Profiles</h3>
+            <p><strong>Aururo</strong>: The narrator of the story, Aururo is a deeply introspective and emotional individual. He is sensitive to the world around him and often struggles with his feelings for Rain. His connection with Rain is complicated by his own insecurities, and his deep emotional sensitivity sometimes prevents him from fully understanding her actions. His journey in the story is one of personal growth, learning how to cope with heartbreak, emotional turmoil, and self-discovery.</p>
+            <p><strong>Rain</strong>: Rain is a complex and multifaceted character. On the surface, she comes across as detached and cool, hiding behind humor and sarcasm to mask her vulnerability. However, her internal world is filled with unresolved emotional pain, stemming from past trauma and her fear of intimacy. Despite her outward bravado, she harbors a deep need for love and connection. Her relationship with Aururo is both close and distant, filled with moments of passion, confusion, and heartache.</p>
+
+        </section>
+
+        <section class="zh fade-in">
+            <h2>《Fall Chopin》简介</h2>
+            <p>《Fall Chopin》是一部深刻探讨两位年轻人——Aururo和Rain之间复杂情感的作品。故事展现了爱与痛苦、情感动荡、自我认知等主题，挑战了传统的浪漫关系观念，揭示了情感中的误解、创伤和个体的成长。</p>
+
+            <h3>A版与B版的区别</h3>
+            <p><strong>A版：</strong>《Fall Chopin》的A版是一个更加节制、内省的版本。它删除了某些过于强烈的情绪表达，避免对个别角色的过度批评。A版更像是一本私人回忆录，倾向于为叙述者的个人治愈和反思而写。它保持了一种相对温和的情感氛围，重点展现人物内心的复杂性，而不会过于直白。</p>
+            <p><strong>B版：</strong>B版是一个更加完整和直白的版本，包含了更多关于人物情感和经历的深刻细节。它揭示了A版中未提及的笔记、冲突、误解以及情感的失控时刻。B版更加真实，表现出人物更深层的心理活动及情感的极限，对读者来说更加冲击力强，但也可能较为沉重，某些情节较为难以承受。</p>
+
+            <h3>剧透警告</h3>
+            <p>本书涉及自我伤害、情感创伤和心理暴力等强烈主题。这些情节是故事发展的核心，阅读时请小心。内容深刻，可能并不适合每位读者。</p>
+
+            <h3>人物简介</h3>
+            <p><strong>Aururo</strong>：故事的叙述者，Aururo是一个情感丰富且内省的年轻人。他对Rain有着深厚的感情，但常常无法理解她的行为和情感波动。Aururo的成长过程充满了挣扎，他试图理解和接受自己的情感，同时也学会如何应对失落和痛苦。</p>
+            <p><strong>Rain</strong>：Rain是一个外表冷静但内心充满痛苦的女孩。她通过幽默和讽刺掩饰自己对爱的渴望与脆弱。她的情感深藏在她对亲密关系的强烈防备之下，尽管她渴望爱情，但却常常表现出冷漠和疏离。Rain与Aururo之间的关系复杂而微妙，充满了爱与痛苦的纠葛。</p>
+        </section>
+
+        <a class="button en show" href="https://github.com/QianNianHZ/HuiLan/tree/main/books/FallChopin">Learn More About Fall Chopin</a>
+        <a class="button zh" href="https://github.com/QianNianHZ/HuiLan/tree/main/books/FallChopin">了解《Fall Chopin》的更多内容</a>
+    </main>
+
+    <footer>
+        &copy; 2025 @HuiLanStudio. All rights reserved.
+    </footer>
+
+    <script>
+        const toggleBtn = document.getElementById('langToggle');
+        const darkToggle = document.getElementById('darkToggle');
+        const zhEls = document.querySelectorAll('.zh');
+        const enEls = document.querySelectorAll('.en');
+
+        let isEnglish = true;
+
+        toggleBtn.addEventListener('click', () => {
+            isEnglish = !isEnglish;
+            toggleBtn.textContent = isEnglish ? '中文' : 'English';
+            zhEls.forEach(el => el.classList.toggle('show', !isEnglish));
+            enEls.forEach(el => el.classList.toggle('show', isEnglish));
+        });
+
+        darkToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark');
+        });
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
 
