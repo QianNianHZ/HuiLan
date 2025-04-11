@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@HuiLanStudio - More Works</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', 'Microsoft YaHei', 'Noto Sans CJK', sans-serif;
+        }
+
+        body {
+            background: #1f1f1f;
+            color: white;
+            line-height: 1.6;
+            transition: all 0.3s ease;
+        }
+
+        header {
+            background: #333;
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+            position: relative;
+        }
+
+            header h1 {
+                font-size: 2.5rem;
+                font-weight: 800;
+            }
+
+        #langToggle {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: #fff;
+            color: #1e1e2f;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        main {
+            padding: 2rem;
+            max-width: 900px;
+            margin: auto;
+        }
+
+        section {
+            margin-bottom: 2rem;
+            background: #2c2c2c;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            color: #e0e0e0;
+            margin-bottom: 1rem;
+        }
+
+        a.button {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.6rem 1.2rem;
+            background: #1e88e5;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background 0.3s;
+        }
+
+            a.button:hover {
+                background: #1565c0;
+            }
+
+        footer {
+            text-align: center;
+            padding: 1rem;
+            font-size: 0.9rem;
+            color: #999;
+        }
+
+        .zh-section {
+            border: 1px dashed #ccc;
+            background: #fffbe6;
+        }
+
+        .zh, .en {
+            display: none;
+        }
+
+        .show {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>@HuiLanStudio</h1>
+        <p class="en show">More Works</p>
+        <p class="zh">更多作品</p>
+        <button id="langToggle">中文</button>
+    </header>
+    <main>
+        <section class="en show">
+            <h2>First Work: Encore</h2>
+            <p>"Encore" tells the story of a middle school student named Clinton, who is navigating his emotional growth. The work has a distinct style of leaving gaps, especially in emotional conflicts, relationship changes, and key decisions. These gaps aren't only present in the spaces between words, but also in the brevity of dialogues, unspoken emotions, and the handling of certain key events. For example, Clinton's relationship with Laura constantly changes, yet much of the inner drama and subtle emotions are left unspoken, only hinted at through brief remarks or actions. This method allows readers to fill in the blanks themselves.</p>
+        </section>
+
+        <section class="en show">
+            <h2>Second Work: Fall Chopin</h2>
+            <p>"Fall Chopin" tells the story of Aururo, a high school student, who also faces emotional challenges. Compared to the female protagonist in "Encore," Aururo's character is more complex and provides a deeper exploration of finding balance in relationships. The story explores how Aururo learns to navigate the ups and downs of emotions, and how these challenges help shape their growth.</p>
+            <h3>A Version vs. B Version</h3>
+            <p>There are two versions of "Fall Chopin"—A version and B version. A version is a customized edition for special individuals and includes fewer content, carefully selected to maintain a focused narrative. B version, on the other hand, is a more comprehensive version that includes additional content and a more detailed exploration of the characters and their emotions. Both versions are great in their own right, offering a unique experience depending on what you’re looking for.</p>
+        </section>
+
+        <section class="zh">
+            <h2>第一部作品：《Encore》</h2>
+            <p>《Encore》讲述了克林顿，一个初中生，在情感成长的过程中所经历的故事。作品《Encore》有很明显的留白处理，尤其在情感冲突、关系转变和关键决策时，给读者留下思考的空间。这种留白不仅体现在文字间的空隙，更体现在对话的简洁、未言明的情感以及某些关键事件的处理上。例如，克林顿和劳拉的关系不断变动，但很多内心戏和微妙情感没有完全写明，而是通过只言片语或行动暗示，这种方式让读者能自己去填补这些空白。</p>
+        </section>
+
+        <section class="zh">
+            <h2>第二部作品：《Fall Chopin》</h2>
+            <p>《Fall Chopin》讲述了高中生Aururo的成长故事，同样涉及情感，但与《Encore》中的女主角相比，Aururo更具挑战性，让他学会了如何在情感中找到平衡。</p>
+            <h3>A版与B版的区别</h3>
+            <p>《Fall Chopin》有两个版本——A版和B版。A版是给特殊人群定制的版本，相较于B版，筛选了很多内容，保持了叙事的集中性。而B版则内容更加丰富，探索了角色与情感的更多层面。两个版本各有优点，取决于你对内容的需求。</p>
+        </section>
+    </main>
+    <footer>
+        &copy; 2025 @HuiLanStudio. All rights reserved.
+    </footer>
+
+    <script>
+        const toggleBtn = document.getElementById('langToggle');
+        const zhEls = document.querySelectorAll('.zh');
+        const enEls = document.querySelectorAll('.en');
+
+        let isEnglish = true;
+
+        toggleBtn.addEventListener('click', () => {
+            isEnglish = !isEnglish;
+            toggleBtn.textContent = isEnglish ? '中文' : 'English';
+            zhEls.forEach(el => el.classList.toggle('show', !isEnglish));
+            enEls.forEach(el => el.classList.toggle('show', isEnglish));
+        });
+    </script>
+</body>
+</html>
