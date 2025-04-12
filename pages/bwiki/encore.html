@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Encore - @HuiLanStudio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color-light: #f4f4f4;
+            --text-color-light: #1f1f1f;
+            --bg-color-dark: #1f1f1f;
+            --text-color-dark: #f4f4f4;
+            --accent-color: #1e88e5;
+            --transition-speed: 0.3s;
+        }
+
+        * {
+            box-sizing: border-box;
+            font-family: 'Inter', 'Microsoft YaHei', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color-dark);
+            color: var(--text-color-dark);
+            line-height: 1.7;
+            transition: background-color var(--transition-speed), color var(--transition-speed);
+        }
+
+        .light-mode {
+            background-color: var(--bg-color-light);
+            color: var(--text-color-light);
+        }
+
+        header {
+            text-align: center;
+            padding: 2rem 1rem 1rem;
+        }
+
+            header h1 {
+                font-size: 2.5rem;
+                font-weight: 800;
+            }
+
+        .lang-toggle,
+        .theme-toggle {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-left: 0.5rem;
+            transition: background 0.3s;
+        }
+
+        .theme-toggle {
+            right: 8.5rem;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 1rem;
+            transition: color var(--transition-speed), background-color var(--transition-speed);
+        }
+
+        section {
+            margin-bottom: 2rem;
+            padding: 1.2rem;
+            border-left: 4px solid var(--accent-color);
+            border-radius: 8px;
+            background: rgba(255,255,255,0.03);
+            transition: background var(--transition-speed);
+        }
+
+        h2 {
+            margin-bottom: 0.6rem;
+            color: var(--accent-color);
+        }
+
+        .zh, .en {
+            display: none;
+        }
+
+        .show {
+            display: block;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        footer {
+            text-align: center;
+            font-size: 0.9rem;
+            color: #888;
+            margin-top: 4rem;
+            padding: 1rem;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .jump-button-wrapper {
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .jump-button {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            margin-top: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 30px;
+            background: linear-gradient(135deg, var(--accent-color), #5e9eff);
+            color: white;
+            box-shadow: 0 4px 12px rgba(30, 136, 229, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+            .jump-button:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 8px 16px rgba(30, 136, 229, 0.4);
+            }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Encore</h1>
+        <button class="theme-toggle">Light</button>
+        <button class="lang-toggle">中文</button>
+    </header>
+
+    <main class="container">
+        <section class="en show">
+            <h2>Story Summary</h2>
+            <p>Encore is a coming-of-age story adapted from the real experiences of LeBaor. It follows Clinton, a junior high student navigating emotional turmoil, centered around his relationships with Laura and Fina.</p>
+            <p>Through first love, misunderstandings, and painful separations, Clinton gradually confronts his doubts, romantic ideals, and social insecurities. The story unfolds in both A and B narrative directions, concluding with reflections from adult Clinton in therapy, underscoring that “regret may remain, but understanding brings peace.”</p>
+        </section>
+
+        <section class="en show">
+            <h2>Plot Structure</h2>
+            <ul>
+                <li><strong>Infatuation:</strong> Clinton silently falls for Laura, his deskmate, with a budding relationship during and after the pandemic.</li>
+                <li><strong>Confession & Dating:</strong> He confesses with friends' encouragement; they date sweetly until authority and self-doubt ruin the bond.</li>
+                <li><strong>Breakup:</strong> Parental pressure and Clinton’s insecurity cause the split. He spirals, clings to games, and briefly gets close to Fina.</li>
+                <li><strong>Fina's Role:</strong> A lively girl from a rough crowd. Despite affection, Clinton can't commit. Violence and misunderstandings follow.</li>
+                <li><strong>Final Choice:</strong> In the B version, Clinton rejects Fina and tries to reconnect with Laura. The ending is open and bittersweet.</li>
+            </ul>
+        </section>
+
+        <section class="en show">
+            <h2>Character Highlights</h2>
+            <p><strong>Clinton:</strong> Sensitive, insecure, creative but conflict-avoidant. His arc shows personal growth through loss.</p>
+            <p><strong>Laura:</strong> Gentle but passive. She’s a symbol of fragile first love crushed by reality and pressure.</p>
+            <p><strong>Fina:</strong> Bold, passionate, yet lost. A mirror to Clinton’s confusion and emotional immaturity.</p>
+            <p><strong>Others:</strong> Maika (quiet admirer of Laura), Mr. Green (authority), Dr. Ford (voice of reflection).</p>
+        </section>
+
+        <section class="en show">
+            <h2>Artistic & Cultural Elements</h2>
+            <ul>
+                <li>Game scenes (Genshin, Sky) as metaphors for connection and distance</li>
+                <li>Jay Chou lyrics evoking nostalgic, bittersweet moods</li>
+                <li>Regional dialects (Sichuan, Chongqing) adding realism and voice</li>
+            </ul>
+        </section>
+
+        <section class="zh">
+            <h2>故事概述</h2>
+            <p>《Encore》是一部青春成长小说，以作者LeBaor的真实经历为蓝本，讲述了初中生克林顿在感情与成长中的挣扎与觉醒。</p>
+            <p>故事围绕与劳拉和菲娜的两段情感展开，通过“初恋”“分离”“纠缠”与“选择”，呈现一个少年在理想与现实中挣扎的心理轨迹。</p>
+        </section>
+
+        <section class="zh">
+            <h2>人物分析</h2>
+            <p><strong>克林顿：</strong> 敏感浪漫，内心多疑。最终在心理咨询中意识到，遗憾的背后是年少的不成熟。</p>
+            <p><strong>劳拉：</strong> 安静羞涩，渴望被理解但屈服于现实压力。</p>
+            <p><strong>菲娜：</strong> 热烈主动，实则缺爱。她是青春期“混乱”的具象化。</p>
+        </section>
+
+        <div class="jump-button-wrapper">
+            <a href="https://github.com/QianNianHZ/HuiLan/tree/main/books/Encore" class="jump-button en show" target="_blank">Read More</a>
+            <a href="https://github.com/QianNianHZ/HuiLan/tree/main/books/Encore" class="jump-button zh">阅读更多</a>
+        </div>
+    </main>
+
+    <footer>
+        @HUILANSTUDIO All rights reserved.
+    </footer>
+
+    <script>
+    const langToggle = document.querySelector('.lang-toggle');
+    const themeToggle = document.querySelector('.theme-toggle');
+    const zhEls = document.querySelectorAll('.zh');
+    const enEls = document.querySelectorAll('.en');
+    let isEnglish = true;
+    let isDark = true;
+
+    langToggle.addEventListener('click', () => {
+      isEnglish = !isEnglish;
+      langToggle.textContent = isEnglish ? '中文' : 'English';
+      zhEls.forEach(el => el.classList.toggle('show', !isEnglish));
+      enEls.forEach(el => el.classList.toggle('show', isEnglish));
+    });
+
+    themeToggle.addEventListener('click', () => {
+      isDark = !isDark;
+      themeToggle.textContent = isDark ? 'Light' : 'Dark';
+      document.body.classList.toggle('light-mode', !isDark);
+    });
+    </script>
+</body>
+</html>
