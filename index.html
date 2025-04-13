@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
@@ -6,6 +6,49 @@
     <title>@HuiLanStudio</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
+        /* 公告栏样式 */
+        .announcement-bar {
+            background: linear-gradient(135deg, #FF6F61, #FF8C42);
+            color: white;
+            text-align: center;
+            font-weight: bold;
+            padding: 1rem 0;
+            font-size: 1.1rem;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: top 0.3s ease;
+        }
+
+            .announcement-bar p {
+                margin: 0;
+            }
+
+        #close-btn {
+            margin-left: 20px;
+            cursor: pointer;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+            transition: color 0.3s ease;
+        }
+
+            #close-btn:hover {
+                color: #FFFBF2;
+            }
+
+        /* 小屏幕显示时公告栏内的文字可以适当缩小 */
+        @media (max-width: 600px) {
+            .announcement-bar p {
+                font-size: 1rem;
+            }
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -191,10 +234,14 @@
     </style>
 </head>
 <body>
+    <div class="announcement-bar">
+        <p>🚨  欢迎来到 @HuiLanStudio，新作《Fall Chopin》上线了，前往更多作品栏目下载。🚨 <span id="close-btn" class="close-btn">✖</span></p>
+    </div>
+
     <header>
         <h1>@HuiLanStudio</h1>
         <p class="en show">A modern creative studio founded by LeBaor</p>
-        <p class="zh">LEBAOR IS NO.1</p>
+        <p class="zh">一个由 LeBaor 创立的现代创作型工作室</p>
         <button id="darkToggle">🌙</button>
         <button id="langToggle">中文</button>
     </header>
@@ -208,7 +255,7 @@
         <section class="en show fade-in">
             <h2>Department 1: Literature</h2>
             <p>The Literature Department focuses on crafting poems, novels, and essays that express deep thought and beauty. You can download our works here:</p>
-            <a class="button" href="https://github.com/QianNianHZ/HuiLan" target="_blank">Download PDF from GitHub</a>
+            <a class="button" href="https://github.com/your-repo-url" target="_blank">Download PDF from GitHub</a>
             <a class="button" href="more-works.html">More Works</a> <!-- 新增按钮 -->
         </section>
 
@@ -218,12 +265,12 @@
         </section>
 
         <section class="zh fade-in">
-            <h2>下载文学作品：</h2>
-            <p>您可以点击下方按钮下载文学作品，此外，你也可以查看文学部作品的介绍：</p>
+            <h2>中文用户：</h2>
+            <p>您可以点击下方按钮下载文学作品：</p>
             <!-- GitHub 和 阿里云盘下载链接，可根据需要更换 -->
-            <a class="button" href="https://github.com/QianNianHZ/HuiLan" target="_blank">GitHub 下载</a>
-            <a class="button" href="https://www.alipan.com/s/BuTF8r5NnNN" target="_blank">阿里云盘下载（提取码：u7u3）</a>
-            <a class="button" href="more-works.html">查看作品信息</a> <!-- 新增按钮 -->
+            <a class="button" href="https://github.com/your-repo-url" target="_blank">GitHub 下载</a>
+            <a class="button" href="https://www.aliyundrive.com/s/example" target="_blank">阿里云盘下载</a>
+            <a class="button" href="more-works.html">查看更多作品</a> <!-- 新增按钮 -->
         </section>
     </main>
 
@@ -232,6 +279,12 @@
     </footer>
 
     <script>
+
+        // 关闭公告栏
+        document.getElementById('close-btn').addEventListener('click', function () {
+            document.querySelector('.announcement-bar').style.top = '-60px'; // 向上移出视口
+        });
+
         const toggleBtn = document.getElementById('langToggle');
         const darkToggle = document.getElementById('darkToggle');
         const zhEls = document.querySelectorAll('.zh');
