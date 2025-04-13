@@ -2,16 +2,19 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-  <title>Fall Chopin - 阅读器</title>
-  <!-- 使用国内 CDN 加载 PDF.js -->
+  <title>Fall of Chopin - 阅读器</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://cdn.bootcdn.net/ajax/libs/pdf.js/2.14.305/pdf.min.js"></script>
   <style>
-    html, body {
+    body {
       margin: 0;
       padding: 0;
-      overflow: hidden;
-      background-color: #f4f4f4;
+      background: #f4f4f4;
+      font-family: sans-serif;
       user-select: none;
+      -webkit-user-select: none;
+      -webkit-touch-callout: none;
+      overflow: hidden;
     }
 
     #viewer {
@@ -20,21 +23,22 @@
       align-items: center;
       justify-content: center;
       height: 100vh;
-      position: relative;
     }
 
     canvas {
-      border: 1px solid #ccc;
-      box-shadow: 0 0 8px rgba(0,0,0,0.1);
+      max-width: 100vw;
+      height: auto;
       background: white;
+      border: 1px solid #ccc;
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
     }
 
     #controls {
       position: fixed;
-      bottom: 20px;
+      bottom: 10px;
       display: flex;
       gap: 10px;
-      background: rgba(255, 255, 255, 0.9);
+      background: rgba(255, 255, 255, 0.95);
       padding: 8px 16px;
       border-radius: 8px;
       box-shadow: 0 0 5px rgba(0,0,0,0.1);
@@ -51,16 +55,17 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%) rotate(-30deg);
-      font-size: 3em;
+      font-size: 2.5em;
       color: rgba(200, 0, 0, 0.1);
       pointer-events: none;
       z-index: 1000;
       white-space: nowrap;
+      text-align: center;
     }
   </style>
 </head>
 <body oncontextmenu="return false" onselectstart="return false" ondragstart="return false">
-  <div class="watermark">仅供阅读</div>
+  <div class="watermark">仅供阅读<br>OnlyRead/div>
   <div id="viewer">
     <canvas id="pdf-canvas"></canvas>
     <div id="controls">
@@ -77,6 +82,7 @@
         canvas = document.getElementById("pdf-canvas"),
         ctx = canvas.getContext("2d");
 
+    // 设置 worker 脚本
     pdfjsLib.GlobalWorkerOptions.workerSrc = "https://cdn.bootcdn.net/ajax/libs/pdf.js/2.14.305/pdf.worker.min.js";
 
     pdfjsLib.getDocument(url).promise.then(pdf => {
@@ -87,17 +93,26 @@
 
     function renderPage(num) {
       pdfDoc.getPage(num).then(page => {
-        const viewport = page.getViewport({ scale: 1.5 });
-        canvas.height = viewport.height;
-        canvas.width = viewport.width;
+        const viewport = page.getViewport({ scale: getScaleForDevice() });
 
-        page.render({
+        canvas.width = viewport.width;
+        canvas.height = viewport.height;
+
+        const renderContext = {
           canvasContext: ctx,
           viewport: viewport
-        });
+        };
 
+        page.render(renderContext);
         document.getElementById("page-num").textContent = num;
       });
+    }
+
+    function getScaleForDevice() {
+      const baseWidth = 800; // 设计时 PDF 原始宽度
+      const screenWidth = window.innerWidth;
+      const scale = screenWidth / baseWidth;
+      return Math.max(scale, 0.75); // 最小缩放
     }
 
     function prevPage() {
